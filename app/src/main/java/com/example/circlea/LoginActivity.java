@@ -17,15 +17,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View v) {
-        TextView textEmail=findViewById(R.id.email);
-        TextView textPassword=findViewById(R.id.password);
-        String email=textEmail.getText().toString();
-        String password =textPassword.getText().toString();
-        UserDB db =new UserDB(this);
-        if(email.isEmpty()||password.isEmpty()){
-            Toast.makeText(this,"All Fields Required ",Toast.LENGTH_LONG).show();
-        }
-       else {
+        TextView textEmail = findViewById(R.id.email);
+        TextView textPassword = findViewById(R.id.password);
+        String email = textEmail.getText().toString();
+        String password = textPassword.getText().toString();
+        UserDB db = new UserDB(this);
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "All Fields Required ", Toast.LENGTH_LONG).show();
+        } else {
             if (db.checkEmailAndPassword(email, password)) {
                 User.setEmail(email);
                 Intent i = new Intent(this, HomeActivity.class);
@@ -36,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-        }
+    }
 
     public void goTORegister(View v) {
         Intent intent = new Intent(this, SignUpActivity.class);
