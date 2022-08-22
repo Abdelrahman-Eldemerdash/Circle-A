@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProductActivity extends AppCompatActivity {
     String type = " ", addition, size = " ";
@@ -177,8 +179,9 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        ImageView SettingsBtn;
-        SettingsBtn = findViewById(R.id.settings);
+
+        LinearLayout SettingsBtn;
+        SettingsBtn = findViewById(R.id.settingsBtn2);
         SettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,19 +189,17 @@ public class ProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        ImageView HomeBtn;
-        HomeBtn = findViewById(R.id.home);
-        HomeBtn.setOnClickListener(new View.OnClickListener() {
+        LinearLayout homebtn;
+        homebtn = findViewById(R.id.homeBtn2);
+        homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProductActivity.this,HomeActivity.class);
                 startActivity(intent);
             }
         });
-
-        ImageView ProfileBtn;
-        ProfileBtn = findViewById(R.id.profile);
+        LinearLayout ProfileBtn;
+        ProfileBtn = findViewById(R.id.profileBtn2);
         ProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,6 +207,15 @@ public class ProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        FloatingActionButton cartBtn = findViewById(R.id.cart_floating_btn);
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ProductActivity.this, CartActivity.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 }
