@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -74,8 +75,17 @@ public class CartActivity extends AppCompatActivity {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(CartActivity.this, PayActivity.class);
-                startActivity(i);
+                if(adapter.getCount()==0){
+
+                    Toast.makeText(getApplicationContext(),"The Cart Is Empty!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent i = new Intent(CartActivity.this, PayActivity.class);
+                    startActivity(i);
+                    productDBHelper.clear();
+                    lvProducts.setAdapter(null);
+                    priceText.setText("0");
+                }
             }
         });
 
