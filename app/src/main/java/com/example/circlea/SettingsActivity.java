@@ -1,37 +1,60 @@
 package com.example.circlea;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
-    Button MButton;
+    Button ModeButton, LogoutBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        MButton = findViewById(R.id.ModeButton);
-        MButton.setOnClickListener(new View.OnClickListener() {
+        ModeButton = findViewById(R.id.ModeButton);
+        LogoutBtn = findViewById(R.id.LogoutBtn);
+        ModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO)
-                {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }
-                else
-                {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+                builder.setMessage("Change Mode & Logout?");
+                builder.setTitle("Alert !");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //yes
+                        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        } else {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // If user click no
+                        // then dialog box is canceled.
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
-
-
+        LogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

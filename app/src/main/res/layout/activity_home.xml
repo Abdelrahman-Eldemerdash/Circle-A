@@ -7,8 +7,8 @@
     tools:context=".HomeActivity"
     android:background="@color/backgroundcolor"
     android:textDirection="ltr"
-    android:theme="@style/Theme.CircleA"
-    android:layoutDirection="ltr">
+    android:layoutDirection="ltr"
+    android:theme="@style/Theme.CircleA">
 
 
 

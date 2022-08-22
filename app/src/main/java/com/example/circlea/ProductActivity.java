@@ -215,7 +215,16 @@ public class ProductActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        LinearLayout menuBTN;
+        menuBTN = findViewById(R.id.menuBtn2);
+        menuBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductActivity.this,category.class);
+                intent.putExtra("category","menu");
+                startActivity(intent);
+            }
+        });
 
     }
 }

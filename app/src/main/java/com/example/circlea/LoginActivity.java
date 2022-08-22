@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
             if (db.checkEmailAndPassword(email, password)) {
                 User.setEmail(email);
                 Intent i = new Intent(this, HomeActivity.class);
-                Toast.makeText(this, "login Successful", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "login Successful", Toast.LENGTH_SHORT).show();
                 startActivity(i);
             } else {
                 Toast.makeText(this, "wrong email or password", Toast.LENGTH_LONG).show();
