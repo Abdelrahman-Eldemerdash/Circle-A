@@ -104,6 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
                     alertDialog.show();
                 } else
                     Toast.makeText(getApplicationContext(), "Choose Light or Night , please", Toast.LENGTH_LONG).show();
+
             }
         });
 
